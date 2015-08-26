@@ -18,15 +18,17 @@
 
     this.onCalculatedValueChanged = function (settingName, newValue) {
 
-      if (settingName === 'data') {
+      if (settingName === 'data')
         data = newValue;
-      }
 
-      if (settingName === 'code') {
-        reactClass = newValue;        
-      }
+      if (settingName === 'code')
+        reactClass = newValue;
 
-      React.render(React.createElement(reactClass, { data: data }), mountPoint);
+      //only render the react component if we have both code and data
+      if (reactClass && data) {
+        var reactData = { data: data };
+        React.render(React.createElement(reactClass, reactData), mountPoint);
+      };
     }
 
     this.onDispose = function () {
@@ -44,7 +46,8 @@
     "display_name": "React",    
     "fill_size": true,
     "external_scripts": [
-      "plugins/thirdparty/react-0.12.2.js"
+      "https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.min.js"
+      //"https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.js"
     ],    
     "settings": [
       {
