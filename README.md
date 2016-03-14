@@ -7,6 +7,11 @@ Plugins for Freeboard.io
 
 - [freeboard.io-node.js](/datasources/plugin_nodejs_sample/README.md) (This is a datasource plugin to connect freeboard.io dashboards to real-time node.js servers)
 
+- loader (Add this datasource plugin to be able to load different dashboard.json files in realtime by sending an http post with the dashboard to load, for example, POST event/change-dashboard/dashboard.js.  The plugin also supports remotely reloading the page by posting to event/reload. Note that it requires a socket.io server to push messages to the datasource)
+```
+$ curl -X POST http://localhost:9000/event/change-dashboard/dashboard
+```
+
 ### widget plugins
 
 - handlebars (author widgets using [handlebars templates](http://handlebarsjs.com))
